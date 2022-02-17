@@ -1,0 +1,11 @@
+
+.item {
+    color:blue;
+    padding:10px
+
+}
+.item img {
+    width: 70px;
+    height: 70px;
+    border-radius: 30px;
+}
