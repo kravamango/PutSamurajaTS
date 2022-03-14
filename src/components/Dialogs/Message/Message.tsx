@@ -8,6 +8,8 @@ type PropsTypeMessage = {
 
 export const Message = (props: PropsTypeMessage) => {
     return (
-        <div>{props.message}</div>
+        <div>
+            <span className={m.count}>5</span>{props.message}
+        </div>
     )
 }

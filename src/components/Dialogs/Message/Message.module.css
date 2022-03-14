@@ -1,0 +1,7 @@
+.count {
+    width: 22px; height: 22px;
+    background:aliceblue; /* Цвет фона */
+    border-radius: 15px; /* Радиус скругления */
+    display: flex run-in;
+
+}

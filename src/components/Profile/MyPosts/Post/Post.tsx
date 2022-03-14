@@ -11,7 +11,6 @@ const Post = (props: PropsType) => {
         <div className={m.item}>
             <img src='https://klike.net/uploads/posts/2019-03/1551511784_4.jpg'/>
             <div>{props.message}</div>
-
             <div>
                 <span>{props.like}like</span>
             </div>

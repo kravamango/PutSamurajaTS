@@ -10,18 +10,29 @@ import Settings from "./components/Settings/Settings";
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Friend from "./components/Friends/Friend/Friend";
 
-
 export type PropsType = {
     state: {
-        dialogsData:Array<dialogsDataType>
-        messagesData:Array<messagesDataType>
-        arrayForPost:Array<arrayForPostType>
-        friend:Array<friendType>
+        profilePage:{
+            arrayForPost:Array<arrayForPostType>
+            newPostText:string
+            sideBar:{
+                friend:Array<friendType>
+            }
+        }
+        messagePage:{
+            messagesData:Array<messagesDataType>
+            dialogsData:Array<dialogsDataType>
+        }
     }
+    addPost:(postMessage: string)=>void
+    updateNewPostText:(newText:string)=>void
 }
 export type dialogsDataType = {
     id:number
     name:string
+    img:string
+
+
 }
 export type messagesDataType = {
     id:number
@@ -46,12 +57,17 @@ const App = (props: PropsType) => {
                 <Navbar/>
                 <div className='app-wraper-content'>
                     <Routes>
-                        <Route path='/message' element={<Dialogs messagesData={props.state.messagesData} dialogsData={props.state.dialogsData}/>}/>
-                        <Route path='/profile' element={<Profile arrayForPost={props.state.arrayForPost}/>}/>
+                        <Route path='/profile' element={<Profile updateNewPostText={props.updateNewPostText}
+                                                                 newPostText={props.state.profilePage.newPostText}
+                                                                 arrayForPost={props.state.profilePage.arrayForPost}
+                                                                 addPost={props.addPost}/>}/>
+                        <Route path='/message' element={<Dialogs messagesData={props.state.messagePage.messagesData}
+                                                                 dialogsData={props.state.messagePage.dialogsData}/>}/>
+
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
                         <Route path='/Settings' element={<Settings/>}/>
-                        <Route path='/Friend' element={<Friend friend={props.state.friend}/>}/>
+                        <Route path='/Friend' element={<Friend friend={props.state.profilePage.sideBar.friend}/>}/>
                     </Routes>
                 </div>
             </div>

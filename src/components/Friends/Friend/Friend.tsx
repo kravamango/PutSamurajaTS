@@ -1,19 +1,25 @@
 import React from 'react';
-import f from './Friends.module.css'
-import {friendType} from "../../../App";
-
-
-type friendPropsType = {
+import {friendType} from "../../../App"
+import f from "./Friend.module.css"
+export type friendPropsType = {
     friend:Array<friendType>
 }
 
-const Friends = (props:friendPropsType) => {
+const Friend = (props:friendPropsType) => {
     return (
         <div>
-            <div>{props.friend[0].img}</div>
-            <div>{props.friend[1].name}</div>
+            {props.friend.map((r) => {
+                return (
+                    <div className={f.item}>
+                        <img alt='' src={r.img}/>
+                        <div className={f.itemName}>{r.name}</div>
+                    </div>
+
+                )
+            })}
+
         </div>
     );
 };
 
-export default Friends;
+export default Friend;

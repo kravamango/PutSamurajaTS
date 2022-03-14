@@ -1,0 +1,17 @@
+
+.item {
+    color:blue;
+    display:flex;
+    margin-top: 10px;
+    margin-left: 10px;
+
+}
+.item img {
+    width: 85px;
+    height: 85px;
+    border-radius: 30px;
+}
+.itemName {
+    margin-top: 5px;
+    margin-left: 10px;
+}

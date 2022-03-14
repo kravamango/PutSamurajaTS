@@ -4,24 +4,28 @@ import {DialogsItem} from "./DIalogsItem/DialogsItem";
 import {Message} from "./Message/Message";
 import {dialogsDataType, messagesDataType} from "../../App";
 
+
 type PropsType = {
-    messagesData:Array<messagesDataType>
-    dialogsData:Array<dialogsDataType>
+    messagesData: Array<messagesDataType>
+    dialogsData: Array<dialogsDataType>
 }
 
 
-const Dialogs = (props:PropsType) => {
-    return <div className={d.Dialogs}>
-        <div className={d.dialogsItem}>
-            {props.dialogsData.map((d) => {
-                return <React.Fragment key={d.id}><DialogsItem name={d.name}/></React.Fragment>
-            })}
-        </div>
-            <div className={d.messageItem}>
-                {props.messagesData.map((m) => {
-                    return <React.Fragment key={m.id}><Message message={m.message}/></React.Fragment>
-                })}
+const Dialogs = (props: PropsType) => {
+
+    let dialogsDataElements = props.dialogsData.map((d) => <React.Fragment key={d.id}><img alt='' src={d.img}/><DialogsItem name={d.name}/></React.Fragment>)
+    let messageDataElement = props.messagesData.map((m) => <React.Fragment key={m.id}><Message message={m.message}/></React.Fragment>)
+
+    return (
+        <div className={d.Dialogs}>
+            <div className={d.dialogsItem}>
+                {dialogsDataElements}
             </div>
-    </div>
+            <div className={d.messageItem}>
+                {messageDataElement}
+            </div>
+        </div>
+    )
 }
 export default Dialogs;
+

@@ -10,4 +10,11 @@
 
 .messageItem {
     display: grid;
+    align-items: center;
+
+}
+.dialogsItem img{
+    width: 70px;
+    height: 70px;
+    border-radius: 30px;
 }
