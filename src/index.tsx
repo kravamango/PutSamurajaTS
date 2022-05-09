@@ -1,12 +1,31 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import state from './State'
-import {rerenderEntireTree} from "./render";
+import ReactDOM from "react-dom";
+import App from "./App";
+import store from "./redux/State";
+
+let rerenderEntireTree = () => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <App state={store.getState()}
+                 dispatch={store.dispatch.bind(store)}
+            />
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
 
 rerenderEntireTree()
+store.subscribe(rerenderEntireTree)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+
+// addPost={store.addPost.bind(store)}
+// updateNewPostText={store.updateNewPostText.bind(store)}
+// addMessage={store.addMessage.bind(store)}
+// updateNewMessageText={store.updateNewMessageText.bind(store)}
