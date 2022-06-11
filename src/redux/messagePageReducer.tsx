@@ -1,7 +1,22 @@
 const ADD_MESSAGE = 'ADD-MESSAGE'
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
-let initialState = {
+export type messagesDataType = {
+    id:number,
+    message:string,
+}
+export type dialogsDataType = {
+    id:number,
+    name:string,
+    img:string,
+}
+export type initialStateType = {
+    newMessageText:string,
+    messagesData:Array<messagesDataType>
+    dialogsData:Array<dialogsDataType>
+}
+
+let initialState:initialStateType = {
     newMessageText: '',
         messagesData: [
         {id: 1, message: 'Привет'},
@@ -39,7 +54,7 @@ let initialState = {
     ],
 };
 
-export const messagePageReducer = (state = initialState, action: any) => {
+export const messagePageReducer = (state = initialState, action: any):initialStateType => {
 
     switch (action.type) {
         case ADD_MESSAGE:
