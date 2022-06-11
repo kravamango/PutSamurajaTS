@@ -2,7 +2,7 @@ import React, {useRef} from 'react';
 import m from "./MyPosts.module.css"
 import Post from "./Post/Post";
 import {arrayForPostType} from "../../../App";
-import {addPostAC, onPostChangeAC} from "../../../redux/profilePageReducer";
+
 
 type arrayForPostPropsType = {
     id: number
@@ -12,7 +12,9 @@ type arrayForPostPropsType = {
 type PropsTypeForMyPosts = {
     arrayForPost: Array<arrayForPostType>
     newPostText: string
-    dispatch: (action: any) => void
+    updateNewPostText:(text:string) => void
+    addPost:() => void
+
 }
 
 const MyPosts = (props: PropsTypeForMyPosts) => {
@@ -20,15 +22,17 @@ const MyPosts = (props: PropsTypeForMyPosts) => {
         message={el.name} like={el.like}/></React.Fragment>)
 
     const newPostElement = useRef<HTMLTextAreaElement>(null);
-
-    const addPost = () => {
-        props.dispatch(addPostAC())
+    const onAddPost = () => {
+        props.addPost();
+        // props.dispatch(addPostAC())
     };
+
     const onPostChange = () => {
-        if (newPostElement && newPostElement.current) {
-            let text = newPostElement.current.value
-            props.dispatch(onPostChangeAC(text))
+        let text = newPostElement.current?.value
+        if (text) {
+            props.updateNewPostText(text)
         }
+
     }
 
     return (
@@ -39,7 +43,7 @@ const MyPosts = (props: PropsTypeForMyPosts) => {
                       value={props.newPostText}
                       placeholder={'New Post'}/>
             <div>
-                <button onClick={addPost}>Add Post</button>
+                <button onClick={onAddPost}>Add Post</button>
             </div>
             <div/>
             {arrayForPostElement}

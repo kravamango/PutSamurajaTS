@@ -1,23 +1,18 @@
 import React from 'react';
 import s from './Profile.module.css';
-import MyPosts from "./MyPosts/MyPosts";
 import {ProfileInfo} from "./MyPosts/ProfileInfo/ProfileInfo";
-import {arrayForPostType} from "../../App";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
+
 
 type PropsTypeForProfile = {
-    arrayForPost:Array<arrayForPostType>
-    newPostText:string
-    dispatch:(action:any)=>void
+    store:any
 }
 
 const Profile = (props:PropsTypeForProfile) => {
     return (
         <div className={s.content}>
             <ProfileInfo/>
-            <MyPosts dispatch={props.dispatch}
-                     arrayForPost={props.arrayForPost}
-                     newPostText={props.newPostText}
-                     />
+            <MyPostsContainer store={props.store}/>
         </div>
 
     )

@@ -2,10 +2,6 @@ import {profilePageReducer} from "./profilePageReducer";
 import {messagePageReducer} from "./messagePageReducer";
 import {sideBarReduser} from "./sideBarReduser";
 
-// const ADD_POST = 'ADD-POST'
-// const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-// const ADD_MESSAGE = 'ADD-MESSAGE'
-// const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
 
 let store = {
     _state: {
@@ -93,44 +89,7 @@ let store = {
         this._state.sideBar = sideBarReduser(this._state.sideBar,action)
         this._callSubscriber()
 
-        // if (action.type === ADD_POST) {
-        //     let newPost = {
-        //         id: 5,
-        //         name: this._state.profilePage.newPostText, // action.postMessage
-        //         like: 0,
-        //     };
-        //     this._state.profilePage.arrayForPost.push(newPost);
-        //     this._state.profilePage.newPostText = ""
-        //     this._callSubscriber();
-        // } else if (action.type === UPDATE_NEW_POST_TEXT) {
-        //     this._state.profilePage.newPostText = action.newText
-        //     this._callSubscriber()
-        // }
-        //
-        // if (action.type === ADD_MESSAGE) {
-        //     let newMessage = {
-        //         id: 5,
-        //         message: this._state.messagePage.newMessageText,
-        //     }
-        //     let newProfile = {
-        //         id: 5,
-        //         name: 'Неизвестный',
-        //         img: 'https://sun9-14.userapi.com/sun9-38/s/v1/if1/pKx4hlE7AUJ4eiAffpDY7vxVcYkSFdHg5BNYWcgliSGVjIerIS2YDnTygIS8fxVFYcGcznOY.jpg?size=200x200&quality=96&crop=80,0,455,455&ava=1',
-        //     }
-        //     this._state.messagePage.messagesData.push(newMessage);
-        //     this._state.messagePage.dialogsData.push(newProfile);
-        //     this._state.messagePage.newMessageText = ""
-        //     this._callSubscriber();
-        // } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-        //     this._state.messagePage.newMessageText = action.newMessageText
-        //     this._callSubscriber()
-        // }
     },
 }
-
-// export const addMessageAC = () => ({type:ADD_MESSAGE})
-// export const onMessageChangeAC = (textMessage:string) => ({type:UPDATE_NEW_MESSAGE_TEXT,newMessageText:textMessage})
-// export const addPostAC = () => ({type: ADD_POST})
-// export const onPostChangeAC = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
 
 export default store;

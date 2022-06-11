@@ -1,7 +1,28 @@
 const ADD_FRIEND = 'ADD-FRIEND'
 const UPDATE_NEW_ADD_FRIEND = 'UPDATE-NEW-ADD-FRIEND'
 
-export const sideBarReduser = (state: any, action: any) => {
+let initialState = {
+    friend: [
+        {
+            id: 1,
+            name: 'Vika Akilova',
+            img: 'https://sun9-82.userapi.com/impg/sgHC6a_PPsks6gp90utJXLeuAJRA7_z3hJgfTA/y4uKXP1dHwA.jpg?size=640x800&quality=96&sign=cdaad2e6920fe9c5fe667f8706d1dc28&type=album'
+        },
+        {
+            id: 2,
+            name: 'Inna Karmazina',
+            img: 'https://sun9-1.userapi.com/impg/fwLvrHF7gHJwGSz_wCotkloGzvKS9IUIPPRr0w/QmtjRalQBFc.jpg?size=768x960&quality=96&sign=48fc3f0a643390844f6a09f9da7b97f4&type=album'
+        },
+        {
+            id: 3,
+            name: 'Angelina Vladychenko',
+            img: 'https://sun9-27.userapi.com/impg/7jpuP39ZHXP7bu9jwJKSTkg_wWAnVLTd7xL-Gw/8m2lv_uF3LE.jpg?size=1023x1279&quality=96&sign=db7d660fc848d02f749289e033b7d076&type=album'
+        },
+    ],
+    newFriendName: '',
+};
+
+export const sideBarReduser = (state = initialState, action: any) => {
 
     switch (action.type) {
         case ADD_FRIEND:
