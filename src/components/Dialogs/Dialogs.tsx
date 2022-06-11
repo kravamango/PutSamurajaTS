@@ -11,8 +11,6 @@ type PropsType = {
     newMessageText:string
     addMessage:()=>void
     updateOnMessageChangeText:(textMessage:string)=>void
-
-
 }
 
 const Dialogs = (props: PropsType) => {
