@@ -1,7 +1,8 @@
 import React, {useRef} from 'react';
 import m from "./MyPosts.module.css"
 import Post from "./Post/Post";
-import {arrayForPostType} from "../../../App";
+import {arrayForPostType} from "../../../redux/profilePageReducer";
+
 
 
 type arrayForPostPropsType = {

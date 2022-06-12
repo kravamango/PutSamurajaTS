@@ -2,18 +2,19 @@ import React, {useRef} from 'react';
 import d from './Dialogs.module.css'
 import {DialogsItem} from "./DIalogsItem/DialogsItem";
 import {Message} from "./Message/Message";
-import {dialogsDataType, messagesDataType} from "../../App";
+
+import {DialogsPropsType} from "./DialogsContainer";
 
 
-type PropsType = {
-    messagesData: Array<messagesDataType>
-    dialogsData: Array<dialogsDataType>
-    newMessageText:string
-    addMessage:()=>void
-    updateOnMessageChangeText:(textMessage:string)=>void
-}
+// type PropsType = {
+//     messagesData: Array<messagesDataType>
+//     dialogsData: Array<dialogsDataType>
+//     newMessageText:string
+//     addMessage:()=>void
+//     updateOnMessageChangeText:(textMessage:string)=>void
+// }
 
-const Dialogs = (props: PropsType) => {
+const Dialogs = (props: DialogsPropsType) => {
     const dialogsDataElements = props.dialogsData.map((d) => <React.Fragment key={d.id}><img alt='' src={d.img}/><DialogsItem name={d.name}/></React.Fragment>)
     const messageDataElement = props.messagesData.map((m) => <React.Fragment key={m.id}><Message message={m.message}/></React.Fragment>)
     const newMessageElement = useRef<HTMLTextAreaElement>(null);

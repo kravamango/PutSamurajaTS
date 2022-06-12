@@ -1,7 +1,16 @@
 const ADD_FRIEND = 'ADD-FRIEND'
 const UPDATE_NEW_ADD_FRIEND = 'UPDATE-NEW-ADD-FRIEND'
 
-let initialState = {
+export type friendType = {
+    id: number
+    name: string
+    img: string
+}
+export type  initialStateType = {
+    friend:Array<friendType>,
+    newFriendName:string
+}
+let initialState:initialStateType = {
     friend: [
         {
             id: 1,
@@ -22,7 +31,7 @@ let initialState = {
     newFriendName: '',
 };
 
-export const sideBarReduser = (state = initialState, action: any) => {
+export const sideBarReduser = (state = initialState, action: AddFriendType | OnTextNameChangeType):initialStateType => {
 
     switch (action.type) {
         case ADD_FRIEND:
@@ -41,5 +50,8 @@ export const sideBarReduser = (state = initialState, action: any) => {
             return state
     }
 }
-export const addFriendAC = () => ({type: ADD_FRIEND})
-export const onTextNameChangeAC = (textName: string) => ({type: UPDATE_NEW_ADD_FRIEND, newFriendName: textName})
+export const addFriendAC = () => ({type: ADD_FRIEND} as const)
+export type AddFriendType = ReturnType<typeof addFriendAC>
+
+export const onTextNameChangeAC = (textName: string) => ({type: UPDATE_NEW_ADD_FRIEND, newFriendName: textName} as const)
+export type OnTextNameChangeType = ReturnType<typeof onTextNameChangeAC>

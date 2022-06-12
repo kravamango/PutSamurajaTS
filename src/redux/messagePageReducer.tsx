@@ -54,7 +54,9 @@ let initialState:initialStateType = {
     ],
 };
 
-export const messagePageReducer = (state = initialState, action: any):initialStateType => {
+type messageActionsTypes = AddMessageType | OnMessageChangeType
+
+export const messagePageReducer = (state = initialState, action: messageActionsTypes):initialStateType => {
 
     switch (action.type) {
         case ADD_MESSAGE:
@@ -79,5 +81,7 @@ export const messagePageReducer = (state = initialState, action: any):initialSta
 
     }
 }
-export const addMessageAC = () => ({type: ADD_MESSAGE})
-export const onMessageChangeAC = (textMessage: string) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: textMessage})
+export const addMessageAC = () => ({type: ADD_MESSAGE}as const)
+export type AddMessageType = ReturnType<typeof addMessageAC>
+export const onMessageChangeAC = (textMessage: string) => ({type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: textMessage}as const)
+export type OnMessageChangeType = ReturnType<typeof onMessageChangeAC>

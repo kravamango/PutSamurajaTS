@@ -1,7 +1,16 @@
 const ADD_POST = 'ADD-POST'
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
 
-let initialState = {
+export type arrayForPostType = {
+    id: number
+    name: string
+    like: number
+}
+export type initialStateType = {
+    arrayForPost:Array<arrayForPostType>,
+    newPostText:string
+}
+let initialState:initialStateType = {
         arrayForPost: [
             {id: 1, name: 'Vitalik', like: 10},
             {id: 2, name: 'Serega', like: 1},
@@ -11,7 +20,7 @@ let initialState = {
         newPostText: '',
     };
 
-export const profilePageReducer = (state = initialState, action: any) => {
+export const profilePageReducer = (state = initialState, action: AddPostType | OnPostChangeType) => {
 
     switch (action.type) {
         case ADD_POST:
@@ -30,5 +39,7 @@ export const profilePageReducer = (state = initialState, action: any) => {
             return state
     }
 }
-export const addPostAC = () => ({type: ADD_POST})
-export const onPostChangeAC = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+export const addPostAC = () => ({type: ADD_POST} as const)
+export type AddPostType = ReturnType<typeof addPostAC>
+export const onPostChangeAC = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text} as const)
+export type OnPostChangeType = ReturnType<typeof onPostChangeAC>
