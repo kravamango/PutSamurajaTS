@@ -59,7 +59,7 @@ type messageActionsTypes = AddMessageType | OnMessageChangeType
 export const messagePageReducer = (state = initialState, action: messageActionsTypes):initialStateType => {
 
     switch (action.type) {
-        case ADD_MESSAGE:
+        case ADD_MESSAGE: {
             let newMessage = {
                 id: 5,
                 message: state.newMessageText,
@@ -69,13 +69,28 @@ export const messagePageReducer = (state = initialState, action: messageActionsT
                 name: 'Неизвестный',
                 img: 'https://sun9-14.userapi.com/sun9-38/s/v1/if1/pKx4hlE7AUJ4eiAffpDY7vxVcYkSFdHg5BNYWcgliSGVjIerIS2YDnTygIS8fxVFYcGcznOY.jpg?size=200x200&quality=96&crop=80,0,455,455&ava=1',
             }
-            state.messagesData.push(newMessage);
-            state.dialogsData.push(newProfile);
-            state.newMessageText = ""
-            return state
-        case UPDATE_NEW_MESSAGE_TEXT:
-            state.newMessageText = action.newMessageText
-            return state
+
+            let stateCopy = {...state};
+            stateCopy.messagesData = [...state.messagesData];
+            stateCopy.dialogsData = [...state.dialogsData];
+            stateCopy.messagesData.push(newMessage);
+            stateCopy.dialogsData.push(newProfile)
+            stateCopy.newMessageText = ''
+            return stateCopy
+
+            // state.messagesData.push(newMessage);
+            // state.dialogsData.push(newProfile);
+            // state.newMessageText = ""
+            // return state
+        }
+        case UPDATE_NEW_MESSAGE_TEXT: {
+            let stateCopy = {...state}
+            stateCopy.newMessageText = action.newMessageText
+            return stateCopy
+
+            // state.newMessageText = action.newMessageText
+            // return state
+        }
         default:
             return state
 
