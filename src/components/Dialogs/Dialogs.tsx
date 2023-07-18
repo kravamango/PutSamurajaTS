@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import d from './Dialogs.module.css'
 import {DialogsItem} from "./DIalogsItem/DialogsItem";
 import {Message} from "./Message/Message";
@@ -19,6 +19,11 @@ const Dialogs = (props: DialogsPropsType) => {
     const messageDataElement = props.messagesData.map((m) => <React.Fragment key={m.id}><Message message={m.message}/></React.Fragment>)
     const newMessageElement = useRef<HTMLTextAreaElement>(null);
 
+
+    const onKeyDown = (e: any) => {
+        e.key === 'Enter' && e.shiftKey && addMessage()
+    }
+
     const addMessage = () => {
         props.addMessage()
     };
@@ -37,6 +42,8 @@ const Dialogs = (props: DialogsPropsType) => {
             <div className={d.messageItem}>
                 {messageDataElement}
             </div>
+
+
             <textarea onChange={onMessageChange}
                       ref={newMessageElement}
                       value={props.newMessageText}

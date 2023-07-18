@@ -1,9 +1,12 @@
 
-export type arrayForPostType = {
+export type usersType = {
     id: number
     followed: boolean
-    fullName: string
-    photoURL: string
+    name: string
+    photos:{
+        small:string
+        large:string
+    }
     status: string
     location: {
         country: string,
@@ -11,7 +14,7 @@ export type arrayForPostType = {
     }
 }
 export type initialStateType = {
-    users: Array<arrayForPostType>,
+    users: Array<usersType>,
 
 }
 type followAT = {
